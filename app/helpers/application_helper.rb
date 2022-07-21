@@ -12,4 +12,11 @@ module ApplicationHelper
       end
     end
   end
+
+  def nested_dom_id(*args)
+    dom_ids = args.map do |arg|
+      arg.respond_to?(:to_key) ? dom_id(arg) : arg
+    end
+    dom_ids.join('_')
+  end
 end
